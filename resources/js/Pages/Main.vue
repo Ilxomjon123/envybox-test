@@ -14,11 +14,12 @@ const form = useForm({
     message: '',
 });
 
+
 defineProps({
   success: {
     type: String,
     default: null
-  }
+  },
 })
 
 const submit = () => {
@@ -52,7 +53,7 @@ const reset = () => {
 
             <div class="mt-4">
                 <BreezeLabel for="email" value="Email" />
-                <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email"
+                <BreezeInput id="email" type="text" class="mt-1 block w-full" v-model="form.email"
                     autocomplete="username" />
             </div>
 

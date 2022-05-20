@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Factories\ContactUsFactory;
+use App\Factories\Contracts\ContactUsFactoryContract;
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ContactUsController extends Controller
 {
@@ -14,7 +17,7 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        return view('Main');
+        return Inertia::render('Main');
     }
 
     /**
@@ -40,7 +43,7 @@ class ContactUsController extends Controller
             'email' => 'required|email',
             'message' => 'required'
         ]);
-        ContactUs::create($request->only('name', 'email', 'message'));
+        ContactUsFactory::make($request->only('name', 'email', 'message'));
         return back()->with('success', 'Your message is successfully sent!');
     }
 
